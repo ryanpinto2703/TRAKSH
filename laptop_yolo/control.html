@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rover Control</title>
+<style>
+:root{
+  --bg:#0f1115; --card:#181b22; --line:#2a2f3a; --text:#e8eaf0; --muted:#8a93a6;
+  --ok:#2fbf71; --warn:#e0a526; --bad:#e5484d; --accent:#4c8dff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:16px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+h1{font-size:20px;margin:0}
+h2{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600}
+.pill{padding:4px 10px;border-radius:999px;background:var(--line);font-size:13px}
+.grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:16px}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.feed{width:100%;border-radius:8px;border:1px solid var(--line);background:#000;display:block}
+.banner{margin:0 0 12px;padding:10px 12px;border-radius:8px;background:#3a2a0a;color:#ffd98a;display:none}
+.banner.show{display:block}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:#11141a;border:1px solid var(--line);border-radius:10px;padding:10px}
+.stat .k{font-size:12px;color:var(--muted)}
+.stat .v{font-size:20px;font-weight:600;margin-top:2px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--muted)}
+.ok{color:var(--ok)} .dot.ok{background:var(--ok)}
+.warn{color:var(--warn)} .dot.warn{background:var(--warn)}
+.bad{color:var(--bad)} .dot.bad{background:var(--bad)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:10px 0}
+label.lbl{color:var(--muted);font-size:13px}
+input[type=range]{width:55%}
+input[type=number],select{background:#11141a;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 8px;width:110px}
+button{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:9px 14px;font-weight:600;cursor:pointer;width:100%}
+button:disabled{opacity:.5;cursor:default}
+.msg{min-height:20px;font-size:13px;margin-top:8px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;min-height:28px}
+.chip{background:#11141a;border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:13px}
+ul.log{list-style:none;margin:0;padding:0;max-height:260px;overflow:auto;font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace}
+ul.log li{padding:6px 0;border-bottom:1px solid var(--line)}
+.muted{color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Rover Control</h1>
+  <span class="pill" id="conn"><span class="dot"></span>connecting…</span>
+</header>
+
+<div class="banner" id="banner" role="status"></div>
+
+<div class="grid">
+  <section class="card">
+    <h2>Live camera</h2>
+    <img class="feed" src="/video_feed" alt="ESP32-CAM live feed with YOLO boxes">
+    <div class="muted" style="margin-top:8px">Boxes are drawn by YOLO. Detections are prompts for human review.</div>
+  </section>
+
+  <section class="card">
+    <h2>Status</h2>
+    <div class="stats">
+      <div class="stat"><div class="k">Camera</div><div class="v" id="s-camera">—</div></div>
+      <div class="stat"><div class="k">Distance sensor</div><div class="v" id="s-sensor">—</div></div>
+      <div class="stat"><div class="k">Distance (cm)</div><div class="v" id="s-dist">—</div></div>
+      <div class="stat"><div class="k">Detector FPS</div><div class="v" id="s-fps">—</div></div>
+    </div>
+
+    <h2 style="margin-top:16px">Detections now</h2>
+    <div class="chips" id="dets"><span class="muted">none</span></div>
+  </section>
+
+  <section class="card">
+    <h2>Controls</h2>
+    <div class="row"><label class="lbl" for="det">Object detection</label><input type="checkbox" id="det"></div>
+    <div class="row"><label class="lbl" for="alr">Alerts</label><input type="checkbox" id="alr"></div>
+    <div class="row">
+      <label class="lbl" for="conf">Confidence <span id="conf-val"></span></label>
+      <input type="range" id="conf" min="0.05" max="0.95" step="0.05">
+    </div>
+    <div class="row">
+      <label class="lbl" for="cls">Alert class</label>
+      <select id="cls"></select>
+    </div>
+    <div class="row">
+      <label class="lbl" for="prox">Proximity alert (cm)</label>
+      <input type="number" id="prox" min="5" max="200" step="1">
+    </div>
+    <button id="apply">Apply settings</button>
+    <div class="msg" id="msg"></div>
+  </section>
+
+  <section class="card">
+    <h2>Rover drive</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:260px;margin:0 auto">
+      <span></span><button data-drive="F">▲ Forward</button><span></span>
+      <button data-drive="L">◀ Left</button><button id="estop" style="background:var(--bad)">■ Stop</button><button data-drive="R">▶ Right</button>
+      <span></span><button data-drive="B">▼ Back</button><span></span>
+    </div>
+    <div class="row"><label class="lbl" for="spd">Speed</label><input type="range" id="spd" min="60" max="200" step="10" value="150"></div>
+    <div class="msg" id="drive-msg">Hold a button or use the arrow keys. Release to stop.</div>
+  </section>
+
+  <section class="card">
+    <h2>Event log</h2>
+    <ul class="log" id="log"><li class="muted">No events yet.</li></ul>
+  </section>
+</div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+let formLoaded = false;
+
+function setConn(ok) {
+  const p = $('#conn');
+  p.innerHTML = '';
+  const d = document.createElement('span');
+  d.className = 'dot ' + (ok ? 'ok' : 'bad');
+  p.append(d, ok ? 'connected' : 'server unreachable');
+}
+
+function setVal(id, text, cls) {
+  const el = $(id);
+  el.textContent = text;
+  el.className = 'v ' + (cls || '');
+}
+
+function renderStatus(s) {
+  const cam = s.camera;
+  setVal('#s-camera', cam, cam === 'online' ? 'ok' : cam === 'offline' ? 'bad' : 'warn');
+  const sen = s.sensor;
+  setVal('#s-sensor', sen, sen === 'ok' ? 'ok' : sen === 'offline' ? 'bad' : 'warn');
+  const d = s.distance_cm;
+  setVal('#s-dist', d === null || d === undefined ? '—' : d.toFixed(1));
+  setVal('#s-fps', s.fps ? s.fps.toFixed(1) : '—');
+
+  const box = $('#dets');
+  box.innerHTML = '';
+  if (!s.detections.length) {
+    const none = document.createElement('span');
+    none.className = 'muted';
+    none.textContent = 'none';
+    box.append(none);
+  } else {
+    for (const det of s.detections) {
+      const c = document.createElement('span');
+      c.className = 'chip';
+      c.textContent = `${det.label} ${Math.round(det.conf * 100)}%`;
+      box.append(c);
+    }
+  }
+}
+
+function renderLog(lines) {
+  const ul = $('#log');
+  ul.innerHTML = '';
+  if (!lines.length) {
+    const li = document.createElement('li');
+    li.className = 'muted';
+    li.textContent = 'No events yet.';
+    ul.append(li);
+    return;
+  }
+  for (const line of lines) {
+    const li = document.createElement('li');
+    li.textContent = line;
+    ul.append(li);
+  }
+}
+
+function syncForm(cfg) {
+  $('#det').checked = cfg.detection_enabled;
+  $('#alr').checked = cfg.alerts_enabled;
+  $('#conf').value = cfg.confidence;
+  $('#conf-val').textContent = Number(cfg.confidence).toFixed(2);
+  $('#cls').value = cfg.alert_class;
+  $('#prox').value = cfg.proximity_cm;
+}
+
+async function poll() {
+  try {
+    const r = await fetch('/api/state', { cache: 'no-store' });
+    const s = await r.json();
+    setConn(true);
+    renderStatus(s.status);
+    renderLog(s.log);
+    if (!formLoaded) {
+      const sel = $('#cls');
+      sel.innerHTML = '';
+      for (const name of s.classes) {
+        const o = document.createElement('option');
+        o.value = name;
+        o.textContent = name;
+        sel.append(o);
+      }
+      syncForm(s.config);
+      formLoaded = true;
+    }
+  } catch (e) {
+    setConn(false);
+  }
+}
+
+$('#conf').addEventListener('input', (e) => {
+  $('#conf-val').textContent = Number(e.target.value).toFixed(2);
+});
+
+$('#apply').addEventListener('click', async () => {
+  const btn = $('#apply');
+  btn.disabled = true;
+  const body = {
+    detection_enabled: $('#det').checked,
+    alerts_enabled: $('#alr').checked,
+    confidence: Number($('#conf').value),
+    alert_class: $('#cls').value,
+    proximity_cm: Number($('#prox').value),
+  };
+  try {
+    const r = await fetch('/api/config', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.error || 'request failed');
+    syncForm(j.config);
+    $('#msg').textContent = 'Settings applied.';
+  } catch (e) {
+    $('#msg').textContent = 'Not applied: ' + e.message;
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+const banner = $('#banner');
+new EventSource('/events').onmessage = (e) => {
+  banner.textContent = e.data;
+  banner.classList.add('show');
+};
+
+let driveTimer = null;
+async function sendDrive(cmd) {
+  try {
+    const r = await fetch('/api/drive', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cmd, speed: Number($('#spd').value) }),
+    });
+    const j = await r.json();
+    if (!r.ok || !j.ok) throw new Error(j.error || 'rover error');
+    $('#drive-msg').textContent = cmd === 'S' ? 'Stopped.' : 'Driving: ' + cmd;
+  } catch (e) {
+    $('#drive-msg').textContent = 'Rover not reachable: ' + e.message;
+  }
+}
+function startDrive(cmd) {
+  stopDrive(false);
+  sendDrive(cmd);
+  driveTimer = setInterval(() => sendDrive(cmd), 200);
+}
+function stopDrive(send = true) {
+  if (driveTimer) { clearInterval(driveTimer); driveTimer = null; }
+  if (send) sendDrive('S');
+}
+document.querySelectorAll('[data-drive]').forEach((b) => {
+  const cmd = b.dataset.drive;
+  b.addEventListener('pointerdown', (e) => { e.preventDefault(); startDrive(cmd); });
+  b.addEventListener('pointerup', () => stopDrive());
+  b.addEventListener('pointerleave', () => stopDrive());
+});
+$('#estop').addEventListener('click', () => stopDrive());
+const KEYS = { ArrowUp: 'F', ArrowDown: 'B', ArrowLeft: 'L', ArrowRight: 'R' };
+document.addEventListener('keydown', (e) => {
+  if (KEYS[e.key] && !e.repeat) { e.preventDefault(); startDrive(KEYS[e.key]); }
+});
+document.addEventListener('keyup', (e) => { if (KEYS[e.key]) stopDrive(); });
+window.addEventListener('blur', () => stopDrive());
+
+poll();
+setInterval(poll, 500);
+</script>
+</body>
+</html>
