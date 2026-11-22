@@ -1,0 +1,466 @@
+[
+  {
+    "id": 1,
+    "time": "2026-11-22 04:30:44",
+    "label": "person",
+    "confidence": 0.613,
+    "snapshot": "/captures/person_20261122_043044.jpg",
+    "clip": "/captures/person_20261122_043044.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:09"
+  },
+  {
+    "id": 2,
+    "time": "2026-11-22 04:30:50",
+    "label": "person",
+    "confidence": 0.471,
+    "snapshot": "/captures/person_20261122_043050.jpg",
+    "clip": "/captures/person_20261122_043050.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:08"
+  },
+  {
+    "id": 3,
+    "time": "2026-11-22 04:30:56",
+    "label": "person",
+    "confidence": 0.638,
+    "snapshot": "/captures/person_20261122_043056.jpg",
+    "clip": "/captures/person_20261122_043056.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:08"
+  },
+  {
+    "id": 4,
+    "time": "2026-11-22 04:33:41",
+    "label": "person",
+    "confidence": 0.706,
+    "snapshot": "/captures/person_20261122_043341.jpg",
+    "clip": "/captures/person_20261122_043341.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:08"
+  },
+  {
+    "id": 5,
+    "time": "2026-11-22 04:33:51",
+    "label": "person",
+    "confidence": 0.518,
+    "snapshot": "/captures/person_20261122_043351.jpg",
+    "clip": "/captures/person_20261122_043351.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:08"
+  },
+  {
+    "id": 6,
+    "time": "2026-11-22 04:33:56",
+    "label": "person",
+    "confidence": 0.468,
+    "snapshot": "/captures/person_20261122_043356.jpg",
+    "clip": "/captures/person_20261122_043356.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:08"
+  },
+  {
+    "id": 7,
+    "time": "2026-11-22 04:34:02",
+    "label": "person",
+    "confidence": 0.505,
+    "snapshot": "/captures/person_20261122_043402.jpg",
+    "clip": "/captures/person_20261122_043402.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:08"
+  },
+  {
+    "id": 8,
+    "time": "2026-11-22 04:34:09",
+    "label": "person",
+    "confidence": 0.558,
+    "snapshot": "/captures/person_20261122_043409.jpg",
+    "clip": "/captures/person_20261122_043409.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:07"
+  },
+  {
+    "id": 9,
+    "time": "2026-11-22 04:34:14",
+    "label": "person",
+    "confidence": 0.471,
+    "snapshot": "/captures/person_20261122_043414.jpg",
+    "clip": "/captures/person_20261122_043414.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:07"
+  },
+  {
+    "id": 10,
+    "time": "2026-11-22 04:34:21",
+    "label": "person",
+    "confidence": 0.481,
+    "snapshot": "/captures/person_20261122_043421.jpg",
+    "clip": "/captures/person_20261122_043421.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:07"
+  },
+  {
+    "id": 11,
+    "time": "2026-11-22 04:34:27",
+    "label": "person",
+    "confidence": 0.452,
+    "snapshot": "/captures/person_20261122_043427.jpg",
+    "clip": "/captures/person_20261122_043427.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:07"
+  },
+  {
+    "id": 12,
+    "time": "2026-11-22 04:34:32",
+    "label": "person",
+    "confidence": 0.582,
+    "snapshot": "/captures/person_20261122_043432.jpg",
+    "clip": "/captures/person_20261122_043432.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:06"
+  },
+  {
+    "id": 13,
+    "time": "2026-11-22 04:34:37",
+    "label": "person",
+    "confidence": 0.464,
+    "snapshot": "/captures/person_20261122_043437.jpg",
+    "clip": "/captures/person_20261122_043437.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:06"
+  },
+  {
+    "id": 14,
+    "time": "2026-11-22 04:34:42",
+    "label": "person",
+    "confidence": 0.518,
+    "snapshot": "/captures/person_20261122_043442.jpg",
+    "clip": "/captures/person_20261122_043442.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:06"
+  },
+  {
+    "id": 15,
+    "time": "2026-11-22 04:41:28",
+    "label": "person",
+    "confidence": 0.474,
+    "snapshot": "/captures/person_20261122_044128.jpg",
+    "clip": "/captures/person_20261122_044128.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:06"
+  },
+  {
+    "id": 16,
+    "time": "2026-11-22 04:41:41",
+    "label": "person",
+    "confidence": 0.462,
+    "snapshot": "/captures/person_20261122_044141.jpg",
+    "clip": "/captures/person_20261122_044141.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:05"
+  },
+  {
+    "id": 17,
+    "time": "2026-11-22 04:42:14",
+    "label": "person",
+    "confidence": 0.607,
+    "snapshot": "/captures/person_20261122_044214.jpg",
+    "clip": "/captures/person_20261122_044214.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:05"
+  },
+  {
+    "id": 18,
+    "time": "2026-11-22 04:42:27",
+    "label": "person",
+    "confidence": 0.766,
+    "snapshot": "/captures/person_20261122_044227.jpg",
+    "clip": "/captures/person_20261122_044227.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:05"
+  },
+  {
+    "id": 19,
+    "time": "2026-11-22 04:42:32",
+    "label": "person",
+    "confidence": 0.526,
+    "snapshot": "/captures/person_20261122_044232.jpg",
+    "clip": "/captures/person_20261122_044232.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:04"
+  },
+  {
+    "id": 20,
+    "time": "2026-11-22 04:42:39",
+    "label": "person",
+    "confidence": 0.533,
+    "snapshot": "/captures/person_20261122_044239.jpg",
+    "clip": "/captures/person_20261122_044239.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:04"
+  },
+  {
+    "id": 21,
+    "time": "2026-11-22 04:42:46",
+    "label": "person",
+    "confidence": 0.472,
+    "snapshot": "/captures/person_20261122_044246.jpg",
+    "clip": "/captures/person_20261122_044246.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:01"
+  },
+  {
+    "id": 22,
+    "time": "2026-11-22 04:42:56",
+    "label": "person",
+    "confidence": 0.488,
+    "snapshot": "/captures/person_20261122_044256.jpg",
+    "clip": "/captures/person_20261122_044256.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:43:59"
+  },
+  {
+    "id": 23,
+    "time": "2026-11-22 04:43:20",
+    "label": "person",
+    "confidence": 0.5,
+    "snapshot": "/captures/person_20261122_044320.jpg",
+    "clip": "/captures/person_20261122_044320.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:03"
+  },
+  {
+    "id": 24,
+    "time": "2026-11-22 04:44:10",
+    "label": "person",
+    "confidence": 0.457,
+    "snapshot": "/captures/person_20261122_044410.jpg",
+    "clip": "/captures/person_20261122_044410.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:44:16"
+  },
+  {
+    "id": 25,
+    "time": "2026-11-22 04:44:18",
+    "label": "person",
+    "confidence": 0.624,
+    "snapshot": "/captures/person_20261122_044418.jpg",
+    "clip": "/captures/person_20261122_044418.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:46:19"
+  },
+  {
+    "id": 26,
+    "time": "2026-11-22 04:44:23",
+    "label": "person",
+    "confidence": 0.524,
+    "snapshot": "/captures/person_20261122_044423.jpg",
+    "clip": "/captures/person_20261122_044423.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:46:19"
+  },
+  {
+    "id": 27,
+    "time": "2026-11-22 04:44:28",
+    "label": "person",
+    "confidence": 0.906,
+    "snapshot": "/captures/person_20261122_044428.jpg",
+    "clip": "/captures/person_20261122_044428.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:46:19"
+  },
+  {
+    "id": 28,
+    "time": "2026-11-22 04:44:33",
+    "label": "person",
+    "confidence": 0.88,
+    "snapshot": "/captures/person_20261122_044433.jpg",
+    "clip": "/captures/person_20261122_044433.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:46:18"
+  },
+  {
+    "id": 29,
+    "time": "2026-11-22 04:44:38",
+    "label": "person",
+    "confidence": 0.847,
+    "snapshot": "/captures/person_20261122_044438.jpg",
+    "clip": "/captures/person_20261122_044438.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:46:18"
+  },
+  {
+    "id": 30,
+    "time": "2026-11-22 04:44:43",
+    "label": "person",
+    "confidence": 0.862,
+    "snapshot": "/captures/person_20261122_044443.jpg",
+    "clip": "/captures/person_20261122_044443.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:46:18"
+  },
+  {
+    "id": 31,
+    "time": "2026-11-22 04:49:31",
+    "label": "person",
+    "confidence": 0.645,
+    "snapshot": "/captures/person_20261122_044931.jpg",
+    "clip": "/captures/person_20261122_044931.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:15"
+  },
+  {
+    "id": 32,
+    "time": "2026-11-22 04:49:38",
+    "label": "person",
+    "confidence": 0.48,
+    "snapshot": "/captures/person_20261122_044938.jpg",
+    "clip": "/captures/person_20261122_044938.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:15"
+  },
+  {
+    "id": 33,
+    "time": "2026-11-22 04:49:57",
+    "label": "person",
+    "confidence": 0.593,
+    "snapshot": "/captures/person_20261122_044957.jpg",
+    "clip": "/captures/person_20261122_044957.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:15"
+  },
+  {
+    "id": 34,
+    "time": "2026-11-22 04:50:10",
+    "label": "person",
+    "confidence": 0.604,
+    "snapshot": "/captures/person_20261122_045010.jpg",
+    "clip": "/captures/person_20261122_045010.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:14"
+  },
+  {
+    "id": 35,
+    "time": "2026-11-22 04:50:16",
+    "label": "person",
+    "confidence": 0.46,
+    "snapshot": "/captures/person_20261122_045016.jpg",
+    "clip": "/captures/person_20261122_045016.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:14"
+  },
+  {
+    "id": 36,
+    "time": "2026-11-22 04:50:25",
+    "label": "person",
+    "confidence": 0.557,
+    "snapshot": "/captures/person_20261122_045025.jpg",
+    "clip": "/captures/person_20261122_045025.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:14"
+  },
+  {
+    "id": 37,
+    "time": "2026-11-22 04:50:41",
+    "label": "person",
+    "confidence": 0.457,
+    "snapshot": "/captures/person_20261122_045041.jpg",
+    "clip": "/captures/person_20261122_045041.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:14"
+  },
+  {
+    "id": 38,
+    "time": "2026-11-22 04:50:55",
+    "label": "person",
+    "confidence": 0.7,
+    "snapshot": "/captures/person_20261122_045055.jpg",
+    "clip": "/captures/person_20261122_045055.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:13"
+  },
+  {
+    "id": 39,
+    "time": "2026-11-22 04:51:02",
+    "label": "person",
+    "confidence": 0.484,
+    "snapshot": "/captures/person_20261122_045102.jpg",
+    "clip": "/captures/person_20261122_045102.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:02"
+  },
+  {
+    "id": 40,
+    "time": "2026-11-22 04:51:07",
+    "label": "person",
+    "confidence": 0.514,
+    "snapshot": "/captures/person_20261122_045107.jpg",
+    "clip": "/captures/person_20261122_045107.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:13"
+  },
+  {
+    "id": 41,
+    "time": "2026-11-22 04:51:12",
+    "label": "person",
+    "confidence": 0.531,
+    "snapshot": "/captures/person_20261122_045112.jpg",
+    "clip": "/captures/person_20261122_045112.mp4",
+    "status": "reviewed",
+    "reviewed_at": "2026-11-22 04:51:13"
+  },
+  {
+    "id": 42,
+    "time": "2026-11-22 04:51:18",
+    "label": "person",
+    "confidence": 0.464,
+    "snapshot": "/captures/person_20261122_045118.jpg",
+    "clip": "/captures/person_20261122_045118.mp4",
+    "status": "pending"
+  },
+  {
+    "id": 43,
+    "time": "2026-11-22 04:51:28",
+    "label": "person",
+    "confidence": 0.581,
+    "snapshot": "/captures/person_20261122_045128.jpg",
+    "clip": "/captures/person_20261122_045128.mp4",
+    "status": "pending"
+  },
+  {
+    "id": 44,
+    "time": "2026-11-22 04:52:30",
+    "label": "person",
+    "confidence": 0.47,
+    "snapshot": "/captures/person_20261122_045230.jpg",
+    "clip": "/captures/person_20261122_045230.mp4",
+    "status": "pending"
+  },
+  {
+    "id": 45,
+    "time": "2026-11-22 04:52:36",
+    "label": "person",
+    "confidence": 0.518,
+    "snapshot": "/captures/person_20261122_045236.jpg",
+    "clip": "/captures/person_20261122_045236.mp4",
+    "status": "pending"
+  },
+  {
+    "id": 46,
+    "time": "2026-11-22 04:52:47",
+    "label": "person",
+    "confidence": 0.464,
+    "snapshot": "/captures/person_20261122_045247.jpg",
+    "clip": "/captures/person_20261122_045247.mp4",
+    "status": "pending"
+  },
+  {
+    "id": 47,
+    "time": "2026-11-22 04:56:23",
+    "label": "person",
+    "confidence": 0.53,
+    "snapshot": "/captures/person_20261122_045623.jpg",
+    "clip": "/captures/person_20261122_045623.mp4",
+    "status": "pending"
+  }
+]
